@@ -12,9 +12,14 @@ import Modal from "@/components/Modal/Modal";
 import { useDebouncedCallback } from "use-debounce";
 import StatusWrapper from "@/components/StatusWrapper/StatusWrapper";
 
-export default function Notes() {
-  const [searchText, setSearchText] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+interface NotesProps {
+  initialPage: number;
+  initialQuery: string;
+}
+
+export default function Notes({ initialPage, initialQuery }: NotesProps) {
+  const [searchText, setSearchText] = useState(initialQuery);
+  const [currentPage, setCurrentPage] = useState(initialPage);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const openModal = () => setIsModalOpen(true);
